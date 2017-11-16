@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="equipos">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Pokédex</title>
+    <title>Fútbol</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"> </script>
+    <script src="js/app.js"></script>
   </head>
   <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img src="img/balon.png">
+            Equipos
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+	  	<div ng-controller="EquipoController as eqCtrl">
+	  		<div class="page-header">
+		  		<h1>
+		  			{{eqCtrl.equipo.name}}
+		  	        <small>{{eqCtrl.equipo.continente}}</small>
+		  	        <span class="label label-primary pull-right">#{{eqCtrl.equipo.id}}</span>
+		  		</h1>
+		  	</div>	
+		  	<div class="row">
+		  		<div class="col-md-6">
+		  			<img class="avatar center-block" ng-src="img/{{eqCtrl.equipo.name | lowercase}}.png">
+		  		</div>
+				 <div class="col-md-6">
+				 	<ul class="nav nav-tabs nav-justified">
+              			<li class="active"><a href="#">Información</a></li>
+              			<li><a href="#">Estadisticas</a></li>
+              			<li><a href="#">Torneos</a></li>
+            		</ul>
+            		<div class="tab-content">
+            		  <div>
+                		<ul class="list-group">
+                  			<li class="list-group-item">
+                  				 <strong>Fundación</strong>
+                  				 <span class="pull-right">{{eqCtrl.equipo.fundacion}}</span>
+                  			</li>
+                  			<li class="list-group-item">
+                  				 <strong>Dir. técnico</strong>
+                  				 <span class="pull-right">{{eqCtrl.equipo.tecnico}}</span>
+                  			</li>
+                  			<li class="list-group-item">
+                  				 <strong>Ránking FIFA</strong>
+                  				 <span ng-repeat="type in eqCtrl.equipo.ranking" class="pull-right">{{ type }}</span>
+                  			</li>	 
+			  	
+			  
+			  	        </ul>
+			         </div>  	
+		            </div>  
+	            </div>
+	        </div>
+	    </div>
+	</div>    
+
   </body>
 </html>
