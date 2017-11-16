@@ -41,33 +41,57 @@
 		  		<div class="col-md-6">
 		  			<img class="avatar center-block" ng-src="img/{{eqCtrl.equipo.name | lowercase}}.png">
 		  		</div>
-				 <div class="col-md-6">
-				 	<ul class="nav nav-tabs nav-justified">
-              			<li class="active"><a href="#">Información</a></li>
-              			<li><a href="#">Estadisticas</a></li>
-              			<li><a href="#">Torneos</a></li>
-            		</ul>
-            		<div class="tab-content">
-            		  <div>
-                		<ul class="list-group">
-                  			<li class="list-group-item">
-                  				 <strong>Fundación</strong>
-                  				 <span class="pull-right">{{eqCtrl.equipo.fundacion}}</span>
-                  			</li>
-                  			<li class="list-group-item">
-                  				 <strong>Dir. técnico</strong>
-                  				 <span class="pull-right">{{eqCtrl.equipo.tecnico}}</span>
-                  			</li>
-                  			<li class="list-group-item">
-                  				 <strong>Ránking FIFA</strong>
-                  				 <span ng-repeat="type in eqCtrl.equipo.ranking" class="pull-right">{{ type }}</span>
-                  			</li>	 
-			  	
-			  
-			  	        </ul>
-			         </div>  	
-		            </div>  
-	            </div>
+				 	<div class="col-md-6">
+					 	<ul class="nav nav-tabs nav-justified">
+	              			<li ng-class="{active:eqCtrl.tab ===1}"><a href="#" ng-click="eqCtrl.selectTab(1)">Información</a></li>
+	              			<li ng-class="{ active:eqCtrl.tab ===2}"><a href="#" ng-click="eqCtrl.selectTab(2)">Estadisticas</a></li>
+	              			<li ng-class="{active:eqCtrl.tab === 3}"><a href="#" ng-click="eqCtrl.selectTab(3)">Torneos</a></li>
+	            		</ul>
+	            		<div class="tab-content">
+
+	            		  	<div ng-show="eqCtrl.tab === 1">
+	                		
+		                		<ul class="list-group">
+		                  			<li class="list-group-item">
+		                  				 <strong>Fundación</strong>
+		                  				 <span class="pull-right">{{eqCtrl.equipo.fundacion}}</span>
+		                  			</li>
+		                  			<li class="list-group-item">
+		                  				 <strong>Dir. técnico</strong>
+		                  				 <span class="pull-right">{{eqCtrl.equipo.tecnico}}</span>
+		                  			</li>
+		                  			<li class="list-group-item">
+		                  				 <strong>Ránking FIFA</strong>
+		                  				 <span ng-repeat="type in eqCtrl.equipo.ranking" class="pull-right">{{ type }}</span>
+		                  			</li>	 
+					  	
+					  
+					  	        </ul>
+				         	</div> 
+				         	<!--Estadisticas -->
+				         	<div ng-show="eqCtrl.tab === 2">
+		                		<ul class="list-group">
+		                  			<li class="list-group-item">
+		                  				 <strong>Ataque</strong>
+		                  				 <span class="pull-right">{{eqCtrl.equipo.stats.attack}}</span>
+		                  			</li>
+		                  			<li class="list-group-item">
+		                  				 <strong>Defensa</strong>
+		                  				 <span class="pull-right">{{eqCtrl.equipo.stats.defense}}</span>
+		                  			</li>
+		                  			
+					  	        </ul>
+				         	</div>
+				         	<!---->
+				         	<div ng-show="eqCtrl.tab === 3">
+	                			
+	             
+			                    <p>
+			                      <strong>{{eqCtrl.equipo.copas}}</strong>
+			                    </p>
+			                </div>    
+	             		</div>
+					</div>  
 	        </div>
 	    </div>
 	</div>    
