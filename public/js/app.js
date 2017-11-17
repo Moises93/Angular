@@ -14,13 +14,29 @@
 		        attack: 99,
 		        defense: 90,
 		    },
-		    copas: [ "alemania 2006", "Brasil 1985", "Usa 1993" ]
+		    copas: [ "alemania 2006", "Brasil 1985-", "Usa 1993-" ]
 		};
 
-		 this.selectTab = function (tab) {
-	      	this.tab = tab;
-	     };
 
 	});
+
+	app.controller('TabsController', function () {
+    this.tab = 1;
+
+    this.selectTab = function (tab) {
+      this.tab = tab;
+    };
+
+  });
+
+	app.controller('CommentsController', function () {
+    this.comments = [];
+    this.show = false;
+
+    this.toggle = function () {
+      this.show = !this.show;
+    };
+
+  });
 
 })();
